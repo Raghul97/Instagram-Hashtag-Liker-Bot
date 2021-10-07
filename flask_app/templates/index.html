@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import bootstrap and custom css. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}" />
+
+    <title>Instagram Hashtag Liker</title>
+
+  </head>
+  <body>
+
+    <div class='form-holder'>
+
+        <!-- header section -->
+        <div class="command-section">
+            <h1>Instagram Hashtag Liker</h1>
+            {% if error %}  
+                <p><strong>Error</strong>: {{error}}</p>  
+            {% endif %}  
+        </div>
+
+        <div class="flex-container">
+          <div class='flex-child'>
+
+            <!-- Form Section -->
+            <form id="insta-bot-form" class="row g-2" method="POST" action="{{ url_for('index') }}">
+
+                <!-- user details section -->
+                <div class="col-md-12 flex-container">
+                    <input type="username" class="form-control" name="username" placeholder="username" required>
+                </div>
+                <div class="col-md-12 flex-container">
+                  <input type="password" class="form-control" name="password" placeholder="password" required>
+                </div>
+                <div class="col-md-12 flex-container">
+                  <input type="password" class="form-control" name="confirm_password" placeholder="confirm password" required>
+                </div>
+
+                <!-- hashtag section -->
+                <div class="col-md-12 flex-container">
+                  <input type="text" class="form-control" name="hashtags" placeholder="Hashtags (separated by comas):" required>
+                </div>
+
+                <!-- submit and reset form section -->
+                <div class="col-md-12 flex-container">
+                  <button type="submit" id='submit' class="btn btn-primary btn-actions">Submit</button>
+                </div>
+                
+                <div class="col-md-12 flex-container">
+                  <button id="reset-form" type="button" class="btn btn-outline-secondary btn-actions">Reset</button>
+                </div>
+
+            </form>
+
+          </div>
+        </div>
+
+    </div>
+
+    <!-- import jquery and custom script. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+  </body>
+</html>

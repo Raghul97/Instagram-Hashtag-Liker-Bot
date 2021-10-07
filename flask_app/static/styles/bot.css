@@ -1,0 +1,57 @@
+body {
+    background-color: #212121;
+    color: white;
+}
+
+p, h2 {
+    color: #e95950;
+}
+
+p {
+    font-size: 3em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 60px;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+#timer {
+    margin-right: 10px;
+    color: white;
+}
+
+h2 {
+    margin: 15px 0;
+}
+
+th {
+    text-align: center;
+}
+
+.form-holder {
+    margin: 50px 80px 20px 30px;
+}
+
+.command-section {
+    margin: 5px 0 50px 60px;
+}
+
+.flex-container {
+    display: flex;
+    margin: 10px 30px;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+
+.btn-actions {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+}

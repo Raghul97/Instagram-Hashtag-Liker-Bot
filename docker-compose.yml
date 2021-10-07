@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  # spin up the standalone selenium server
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+    - 4444:4444
+    restart: always
+
+  # build flask application and expose port 5000.
+  flask_app:
+    build: './flask_app'
+    ports:
+      - "5000:5000"
+    depends_on:
+      - selenium
+      - redis
+      - db
+    links:
+      - db
+  
+  # pull redis image and set empty password for developer environment and export port 6379.
+  redis:
+    hostname: redis
+    image: docker.io/bitnami/redis:6.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+
+  # pull mongodb image.
+  db:
+    image: mongo:3.0.2
+
+  # build celery app.
+  celery_worker:
+    build: './celery_worker'
+    depends_on:
+      - selenium
+      - redis
+      - flask_app
+    links:
+      - db
+  

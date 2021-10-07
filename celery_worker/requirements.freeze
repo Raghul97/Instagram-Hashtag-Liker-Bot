@@ -1,0 +1,4 @@
+celery[redis]
+selenium==3.141.0
+urllib3==1.26.7
+pymongo==3.12.0
