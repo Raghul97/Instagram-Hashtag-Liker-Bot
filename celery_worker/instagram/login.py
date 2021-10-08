@@ -9,13 +9,20 @@ class InstaLogin:
         self.username = username
         self.password = password
         self.insta_login_url = "https://instagram.com/accounts/login"
-        self.driver = webdriver.Remote('http://selenium:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
+        i = 0
+        while i < 3:
+            try:
+                self.driver = webdriver.Remote('http://selenium:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
+                break
+            except:
+                i += 1
+                delay(2)
         self.login()
         self.verify_login()
 
     def terminate_bot(self):
         """
-            terminate the driver, once ob is completed.
+            terminate the driver, once job is completed.
         """
         self.driver.close()
 

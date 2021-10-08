@@ -38,7 +38,7 @@ function update_timer(status_url) {
                 $('#timer').text('Finished - ' + data['current_time']);
             }
             else {
-                $('#timer').text('Error - ' + data['current_time']);
+                $('#timer').text("Process Failed");
             }
             return
         }

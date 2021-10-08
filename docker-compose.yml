@@ -33,6 +33,7 @@ services:
   # pull mongodb image.
   db:
     image: mongo:3.0.2
+    command: --smallfiles
 
   # build celery app.
   celery_worker:
