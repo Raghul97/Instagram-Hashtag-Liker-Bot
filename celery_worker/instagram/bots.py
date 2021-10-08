@@ -113,11 +113,11 @@ class InstagramPostLiker(InstaLogin):
         while i < 3:
             try:
                 like_icon_color = self.driver.execute_script("return document.querySelector('span.fr66n > button > div > span > svg').getAttribute('color')")
-                break
+                return not like_icon_color == "#ed4956"
             except:
                 delay(2)
                 i += 1
-        return not like_icon_color == "#ed4956"
+        
 
     def click_heart_icon(self):
         """
